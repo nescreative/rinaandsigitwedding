@@ -1,241 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan Aisyah & Raka</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="floral-field" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="cover" id="cover">
-    <div class="cover__media" aria-hidden="true"></div>
-    <div class="cover__content">
-      <p class="eyebrow">The Wedding of</p>
-      <h1>Rina & Sigit</h1>
-      <p class="cover__date">Sabtu, 06 Juni 2026</p>
-      <p class="cover__guest">Kepada Yth. <span id="guestName">Bapak/Ibu/Saudara/i</span></p>
-      <button class="primary-btn" id="openInvitation" type="button">Buka Undangan</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Pernikahan Rina & Sigit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="cover" id="cover">
+      <div class="cover__media" aria-hidden="true"></div>
+      <div class="cover__asset cover__asset--left" aria-hidden="true"></div>
+      <div class="cover__asset cover__asset--right" aria-hidden="true"></div>
+      <div class="cover__content">
+        <p class="eyebrow">The Wedding of</p>
+        <h1>Rina & Sigit</h1>
+        <p class="cover__date">Sabtu, 06 Juni 2026</p>
+        <p class="cover__guest">
+          Kepada Yth. <span id="guestName">Bapak/Ibu/Saudara/i</span>
+        </p>
+        <button class="primary-btn" id="openInvitation" type="button">
+          Buka Undangan
+          <span class="btn-icon btn-icon--mail" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <header class="site-header" id="home">
-    <nav class="nav">
-      <a class="brand" href="#home">R&S</a>
-      <button class="nav__toggle" type="button" aria-label="Buka menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-      <div class="nav__links">
-        <a href="#couple">Mempelai</a>
-        <a href="#event">Acara</a>
-        <a href="#story">Cerita</a>
-        <a href="#gallery">Galeri</a>
-        <a href="#rsvp">RSVP</a>
-      </div>
-    </nav>
-
-    <section class="hero">
-      <div class="hero__content">
-        <p class="eyebrow">Undangan Pernikahan</p>
-        <h2>Rina Agustina & Sigit</h2>
-        <p class="hero__text">Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan menjadi bagian dari hari bahagia kami.</p>
-        <div class="hero__actions">
-          <a class="primary-btn" href="#event">Lihat Detail</a>
-          <a class="ghost-btn" href="#rsvp">Konfirmasi Hadir</a>
+    <header class="site-header" id="home">
+      <nav class="nav">
+        <a class="brand" href="#home">R&S</a>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Buka menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav__links">
+          <a href="#couple">Mempelai</a>
+          <a href="#event">Acara</a>
+          <a href="#story">Cerita</a>
+          <a href="#gallery">Galeri</a>
+          <a href="#rsvp">RSVP</a>
         </div>
-      </div>
-      <div class="hero__photo" role="img" aria-label="Pasangan pengantin"></div>
-    </section>
-  </header>
+      </nav>
 
-  <main>
-    <section class="countdown-section">
-      <p class="eyebrow">Menuju Hari Bahagia</p>
-      <div class="countdown" data-date="2026-06-06T09:00:00+07:00">
-        <div><strong id="days">00</strong><span>Hari</span></div>
-        <div><strong id="hours">00</strong><span>Jam</span></div>
-        <div><strong id="minutes">00</strong><span>Menit</span></div>
-        <div><strong id="seconds">00</strong><span>Detik</span></div>
-      </div>
-    </section>
-
-    <section class="section couple" id="couple">
-      <div class="section-heading">
-        <p class="eyebrow">Mempelai</p>
-        <h2>Dengan Rahmat Tuhan Yang Maha Esa</h2>
-        <p>Kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
-      </div>
-      <div class="couple__grid">
-        <article class="profile">
-          <div class="profile__image profile__image--bride"></div>
-          <p class="profile__role">Mempelai Wanita</p>
-          <h3>Rina Agustina</h3>
-          <p>Putri kelima dari Bapak Mukti dan Ibu Tati Setiawati.</p>
-        </article>
-        <div class="ampersand">&</div>
-        <article class="profile">
-          <div class="profile__image profile__image--groom"></div>
-          <p class="profile__role">Mempelai Pria</p>
-          <h3>Sigit</h3>
-          <p>Putra pertama dari Bapak Fulan dan Ibu Fulin.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section event" id="event">
-      <div class="section-heading">
-        <p class="eyebrow">Detail Acara</p>
-        <h2>Waktu & Tempat</h2>
-      </div>
-      <div class="event__grid">
-        <article class="event-card">
-          <span class="event-card__tag">Akad Nikah</span>
-          <h3>Sabtu, 06 Juni 2026</h3>
-          <p>09.00 - 11.00 WIB</p>
-          <p>Dimana Aja Yang Penting Jadi</p>
-          <a class="text-link" href="https://maps.google.com" target="_blank" rel="noreferrer">Buka Google Maps</a>
-        </article>
-        <article class="event-card">
-          <span class="event-card__tag">Resepsi</span>
-          <h3>Sabtu, 06 Juni 2026</h3>
-          <p>11.00 WIB - Selesai</p>
-          <p>Dimana Aja Yang Penting Jadi</p>
-          <a class="text-link" href="https://calendar.google.com" target="_blank" rel="noreferrer">Simpan Tanggal</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section story" id="story">
-      <div class="section-heading">
-        <p class="eyebrow">Our Story</p>
-        <h2>Perjalanan Kami</h2>
-      </div>
-      <div class="timeline">
-        <article>
-          <span>2021</span>
-          <h3>Pertemuan Pertama</h3>
-          <p>Kami bertemu dalam sebuah kegiatan komunitas dan mulai saling mengenal dari percakapan sederhana.</p>
-        </article>
-        <article>
-          <span>2024</span>
-          <h3>Lamaran</h3>
-          <p>Dengan restu keluarga, kami mengikat janji untuk melangkah ke jenjang yang lebih serius.</p>
-        </article>
-        <article>
-          <span>2026</span>
-          <h3>Hari Bahagia</h3>
-          <p>Kini kami memulai babak baru dan berharap doa terbaik dari keluarga serta sahabat.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section gallery" id="gallery">
-      <div class="section-heading">
-        <p class="eyebrow">Galeri</p>
-        <h2>Momen Pilihan</h2>
-      </div>
-      <div class="gallery__grid">
-        <div class="gallery__item gallery__item--large"></div>
-        <div class="gallery__item gallery__item--one"></div>
-        <div class="gallery__item gallery__item--two"></div>
-        <div class="gallery__item gallery__item--three"></div>
-        <div class="gallery__item gallery__item--four"></div>
-        <div class="gallery__item gallery__item--five"></div>
-        <div class="gallery__item gallery__item--six"></div>
-        <div class="gallery__item gallery__item--seven"></div>
-        <div class="gallery__item gallery__item--eight"></div>
-      </div>
-    </section>
-
-    <section class="section gift">
-      <div>
-        <p class="eyebrow">Wedding Gift</p>
-        <h2>Amplop Digital</h2>
-        <p>Doa restu Anda adalah hadiah terbaik. Apabila ingin memberikan tanda kasih, dapat melalui rekening atau alamat kirim kado berikut.</p>
-      </div>
-      <div class="gift__cards">
-        <div class="bank-card">
-          <p>Bank BCA</p>
-          <h3>1234567890</h3>
-          <span>a.n. Rina Agustina</span>
-          <button class="ghost-btn copy-btn" type="button" data-copy="1234567890">Salin Nomor</button>
-        </div>
-        <div class="bank-card">
-          <p>Bank Mandiri</p>
-          <h3>9876543210</h3>
-          <span>a.n. Sigit Pratama</span>
-          <button class="ghost-btn copy-btn" type="button" data-copy="9876543210">Salin Nomor</button>
-        </div>
-        <div class="bank-card bank-card--address">
-          <p>Kirim Kado</p>
-          <h3>Rumah Mempelai</h3>
-          <span id="giftAddress">Jl. Melati Indah No. 18, Kebayoran Baru, Jakarta Selatan 12110</span>
-          <button class="ghost-btn copy-btn" type="button" data-copy="Jl. Melati Indah No. 18, Kebayoran Baru, Jakarta Selatan 12110">Salin Alamat</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section rsvp" id="rsvp">
-      <div class="section-heading">
-        <p class="eyebrow">RSVP</p>
-        <h2>Konfirmasi Kehadiran</h2>
-        <p>Mohon bantu kami mempersiapkan acara dengan mengisi form berikut.</p>
-      </div>
-      <form class="rsvp-form">
-        <label>
-          Nama
-          <input type="text" name="name" id="rsvpName" placeholder="Nama lengkap" required>
-        </label>
-        <label>
-          Kehadiran
-          <select name="attendance" required>
-            <option value="">Pilih status</option>
-            <option value="hadir">Hadir</option>
-            <option value="tidak-hadir">Tidak hadir</option>
-          </select>
-        </label>
-        <label>
-          Ucapan
-          <textarea name="message" rows="4" placeholder="Tulis doa dan ucapan"></textarea>
-        </label>
-        <button class="primary-btn" type="submit">Kirim RSVP</button>
-        <p class="form-message" role="status"></p>
-      </form>
-      <div class="guest-book">
-        <div class="guest-book__header">
-          <div>
-            <p class="eyebrow">Ucapan Tamu</p>
-            <h3>Doa & Konfirmasi</h3>
+      <section class="hero">
+        <div class="hero-scene" aria-hidden="true">
+          <div class="sun-glow"></div>
+          <div class="sunda-stage">
+            <div class="stage-roof"></div>
+            <div class="stage-pillars"></div>
+            <div class="stage-floor"></div>
           </div>
-          <button class="ghost-btn" type="button" id="refreshWishes">Muat Ulang</button>
+          <div class="hero-arch"></div>
+          <div class="gunungan"></div>
+          <div class="floral-corner floral-corner--left"></div>
+          <div class="floral-corner floral-corner--right"></div>
+          <div class="floral-corner floral-corner--top"></div>
+          <div class="butterfly butterfly--one"><i></i></div>
+          <div class="butterfly butterfly--two"><i></i></div>
+          <div class="butterfly butterfly--three"><i></i></div>
         </div>
-        <div class="wishes-list" id="wishesList">
-          <p class="wishes-list__empty">Belum ada ucapan yang ditampilkan.</p>
+        <div class="hero__content">
+          <div class="hero__ornament" aria-hidden="true"></div>
+          <p class="eyebrow">Undangan Pernikahan</p>
+          <h2>Rina Agustina & Sigit Nugraha</h2>
+          <p class="hero__text">Our Wedding Day</p>
+          <div class="hero__actions">
+            <a class="primary-btn" href="#event">Lihat Detail</a>
+            <a class="ghost-btn" href="#rsvp">Konfirmasi Hadir</a>
+          </div>
+          <a
+            class="scroll-cue"
+            href="#couple"
+            aria-label="Scroll ke bagian mempelai"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
         </div>
-      </div>
-    </section>
-  </main>
+        <div
+          class="hero__photo"
+          role="img"
+          aria-label="Pasangan pengantin"
+        ></div>
+      </section>
+    </header>
 
-  <footer class="footer">
-    <p>Terima kasih atas doa dan kehadiran Anda.</p>
-    <h2>Aisyah & Raka</h2>
-  </footer>
+    <main>
+      <section class="countdown-section">
+        <p class="eyebrow">Menuju Hari Bahagia</p>
+        <div class="countdown" data-date="2026-06-06T09:00:00+07:00">
+          <div><strong id="days">00</strong><span>Hari</span></div>
+          <div><strong id="hours">00</strong><span>Jam</span></div>
+          <div><strong id="minutes">00</strong><span>Menit</span></div>
+          <div><strong id="seconds">00</strong><span>Detik</span></div>
+        </div>
+      </section>
 
-  <button class="music-toggle" id="musicToggle" type="button" aria-label="Aktifkan musik">♪</button>
-  <script src="script.js"></script>
-</body>
+      <section class="section couple" id="couple">
+        <div class="section-heading">
+          <p class="eyebrow">Mempelai</p>
+          <h2>Dengan Rahmat Tuhan Yang Maha Esa</h2>
+          <p>Kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
+        </div>
+        <div class="couple__grid">
+          <article class="profile">
+            <div class="profile__image profile__image--bride"></div>
+            <p class="profile__role">Mempelai Wanita</p>
+            <h3>Rina Agustina</h3>
+            <p>Putri kelima dari Bapak Mukti dan Ibu Tati Setiawati.</p>
+          </article>
+          <div class="ampersand">&</div>
+          <article class="profile">
+            <div class="profile__image profile__image--groom"></div>
+            <p class="profile__role">Mempelai Pria</p>
+            <h3>Sigit Nugraha</h3>
+            <p>Putra kedua dari Bapak Sugiri dan Ibu Titi.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section event" id="event">
+        <div class="section-heading">
+          <p class="eyebrow">Detail Acara</p>
+          <h2>Waktu & Tempat</h2>
+        </div>
+        <div class="event__grid">
+          <article class="event-card">
+            <span class="event-card__tag">Akad Nikah</span>
+            <h3>Sabtu, 06 Juni 2026</h3>
+            <p>09.00 - 11.00 WIB</p>
+            <p>
+              Gang H. Akil, Kp. Palanyar RT 003 / RW 004, Desa Palanyar,
+              Kecamatan Cipeucang, Kabupaten Pandeglang, Banten
+            </p>
+            <a
+              class="text-link"
+              href="https://maps.app.goo.gl/neY83irra4PhFBuS9"
+              target="_blank"
+              rel="noreferrer"
+              >Buka Google Maps</a
+            >
+          </article>
+          <article class="event-card">
+            <span class="event-card__tag">Resepsi</span>
+            <h3>Sabtu, 06 Juni 2026</h3>
+            <p>11.00 WIB - Selesai</p>
+            <p>
+              Gang H. Akil, Kp. Palanyar RT 003 / RW 004, Desa Palanyar,
+              Kecamatan Cipeucang, Kabupaten Pandeglang, Banten
+            </p>
+            <a
+              class="text-link"
+              href="https://calendar.google.com"
+              target="_blank"
+              rel="noreferrer"
+              >Simpan Tanggal</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section class="section story" id="story">
+        <div class="section-heading">
+          <p class="eyebrow">Our Story</p>
+          <h2>Perjalanan Kami</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>2022</span>
+            <h3>Pertemuan Pertama</h3>
+            <p>
+              Semua berawal dari hal sederhana. Kami pertama kali bertemu di
+              rumah, saat melakukan COD memory. Tidak ada yang menyangka, dari
+              pertemuan singkat itu justru menjadi awal dari perjalanan panjang
+              kami bersama.
+            </p>
+          </article>
+          <article>
+            <span>2026</span>
+            <h3>Lamaran</h3>
+            <p>
+              Setelah melalui perjalanan bersama, kami memutuskan melangkah ke
+              tahap yang lebih serius. Dengan niat baik dan restu keluarga,
+              lamaran pun menjadi awal dari komitmen kami untuk masa depan
+              bersama.
+            </p>
+          </article>
+          <article>
+            <span>2026</span>
+            <h3>Hari Bahagia</h3>
+            <p>
+              Dengan penuh rasa syukur, kami mengikat janji suci dalam
+              pernikahan. Sebuah awal baru untuk melangkah bersama, saling
+              menjaga, dan tumbuh dalam cinta sepanjang hidup.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section gallery" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Galeri</p>
+          <h2>Momen Pilihan</h2>
+        </div>
+        <div class="gallery__grid">
+          <div class="gallery__item gallery__item--large"></div>
+          <div class="gallery__item gallery__item--one"></div>
+          <div class="gallery__item gallery__item--two"></div>
+        </div>
+      </section>
+
+      <section class="section gift">
+        <div>
+          <p class="eyebrow">Wedding Gift</p>
+          <h2>Amplop Digital</h2>
+          <p>
+            Doa restu Anda adalah hadiah terbaik. Apabila ingin memberikan tanda
+            kasih, dapat melalui rekening atau alamat kirim kado berikut.
+          </p>
+        </div>
+        <div class="gift__cards">
+          <div class="bank-card">
+            <div class="bank-card__top">
+              <p>DANA</p>
+              <img src="assets/img/dana.png" alt="Logo DANA" class="bank-card__logo bank-card__logo--dana" />
+            </div>
+            <h3>083872003521</h3>
+            <span>a.n. Rina Agustina</span>
+            <button
+              class="ghost-btn copy-btn"
+              type="button"
+              data-copy="083872003521"
+            >
+              Salin Nomor
+            </button>
+          </div>
+          <div class="bank-card">
+            <div class="bank-card__top">
+              <p>Bank Mandiri</p>
+              <img src="assets/img/mandiri.png" alt="Logo Bank Mandiri" class="bank-card__logo bank-card__logo--mandiri" />
+            </div>
+            <h3>1680003278346</h3>
+            <span>a.n. Sigit Nugraha</span>
+            <button
+              class="ghost-btn copy-btn"
+              type="button"
+              data-copy="1680003278346"
+            >
+              Salin Nomor
+            </button>
+          </div>
+          <div class="bank-card bank-card--address">
+            <p>Kirim Kado</p>
+            <h3>Rumah Mempelai</h3>
+            <span id="giftAddress"
+              >Gang H. Akil, Kp. Palanyar RT 003 / RW 004, Desa Palanyar,
+              Kecamatan Cipeucang, Kabupaten Pandeglang, Banten, 42272.</span
+            >
+            <button
+              class="ghost-btn copy-btn"
+              type="button"
+              data-copy="Jl. Melati Indah No. 18, Kebayoran Baru, Jakarta Selatan 12110"
+            >
+              Salin Alamat
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section rsvp" id="rsvp">
+        <div class="section-heading">
+          <p class="eyebrow">RSVP</p>
+          <h2>Konfirmasi Kehadiran</h2>
+          <p>
+            Mohon bantu kami mempersiapkan acara dengan mengisi form berikut.
+          </p>
+        </div>
+        <form class="rsvp-form">
+          <label>
+            Nama
+            <input
+              type="text"
+              name="name"
+              id="rsvpName"
+              placeholder="Nama lengkap"
+              required
+            />
+          </label>
+          <label>
+            Kehadiran
+            <select name="attendance" required>
+              <option value="">Pilih status</option>
+              <option value="hadir">Hadir</option>
+              <option value="tidak-hadir">Tidak hadir</option>
+            </select>
+          </label>
+          <label>
+            Ucapan
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Tulis doa dan ucapan"
+            ></textarea>
+          </label>
+          <button class="primary-btn" type="submit">Kirim RSVP</button>
+          <p class="form-message" role="status"></p>
+        </form>
+        <div class="guest-book">
+          <div class="guest-book__header">
+            <div>
+              <p class="eyebrow">Ucapan Tamu</p>
+              <h3>Doa & Konfirmasi</h3>
+            </div>
+            <button class="ghost-btn" type="button" id="refreshWishes">
+              Muat Ulang
+            </button>
+          </div>
+          <div class="wishes-list" id="wishesList">
+            <p class="wishes-list__empty">Belum ada ucapan yang ditampilkan.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Terima kasih atas doa dan kehadiran Anda.</p>
+      <h2>Rina & Sigit</h2>
+    </footer>
+
+    <audio id="weddingMusic" src="KicauMania.mp3" loop preload="auto"></audio>
+    <button
+      class="music-toggle"
+      id="musicToggle"
+      type="button"
+      aria-label="Putar musik"
+    >
+      <span class="music-icon" aria-hidden="true"></span>
+    </button>
+    <script src="script.js"></script>
+  </body>
 </html>
