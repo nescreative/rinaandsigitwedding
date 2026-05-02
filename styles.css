@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
   background: var(--paper);
   font-family: "Outfit", system-ui, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 body.is-locked {
@@ -2586,5 +2588,122 @@ body.invitation-open .site-header {
     height: 170px;
     right: -58px;
     bottom: 118px;
+  }
+}
+
+/* Mobile viewport fit guard */
+@media (max-width: 640px) {
+  body,
+  main,
+  .site-header,
+  .section,
+  .countdown-section,
+  .event,
+  .gallery,
+  .gift,
+  .rsvp,
+  .couple {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .section,
+  .countdown-section {
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .event,
+  .gallery {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hero-scene {
+    inset-inline: 0;
+  }
+
+  .couple__grid,
+  .event__grid,
+  .gift,
+  .gift__cards {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .profile,
+  .event-card,
+  .bank-card,
+  .rsvp-form,
+  .guest-book,
+  .wish-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .profile {
+    overflow: hidden;
+    isolation: auto;
+  }
+
+  .profile::before {
+    width: 120px;
+    height: 120px;
+    left: auto;
+    right: -38px;
+    top: 42%;
+    opacity: 0.72;
+    z-index: 0;
+  }
+
+  .profile::after {
+    width: 130px;
+    height: 130px;
+    right: auto;
+    left: -46px;
+    bottom: 34px;
+    opacity: 0.66;
+    z-index: 0;
+  }
+
+  .profile > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile h3 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .profile p {
+    overflow-wrap: anywhere;
+  }
+
+  .gallery__grid {
+    width: 100%;
+    max-width: 390px;
+  }
+
+  .gallery__item {
+    width: 100%;
+  }
+
+  .floral-corner--left,
+  .floral-corner--right,
+  .floral-corner--top,
+  .event::before,
+  .gallery::after,
+  .gift::before,
+  .rsvp::after {
+    max-width: 42vw;
   }
 }
