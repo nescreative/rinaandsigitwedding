@@ -11,10 +11,27 @@ const wishesList = document.querySelector("#wishesList");
 const refreshWishes = document.querySelector("#refreshWishes");
 const copyButtons = document.querySelectorAll(".copy-btn");
 const musicToggle = document.querySelector("#musicToggle");
-const revealItems = document.querySelectorAll(".section, .countdown-section, .event-card, .profile, .timeline article, .gallery__item, .bank-card");
+const weddingMusic = document.querySelector("#weddingMusic");
+const revealItems = document.querySelectorAll(".section, .section-heading, .countdown-section, .countdown div, .event-card, .profile, .timeline article, .gallery__item, .bank-card, .rsvp-form, .guest-book");
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyU8tZ7z8QCI5B0v-NwTVXr3-RaZJii69qmmupneKfUuTWr_ZdOZqjwZyjuf1WR6mG7tA/exec";
+const parallaxItems = [
+  { selector: ".hero__content", speed: -0.06 },
+  { selector: ".hero-arch", speed: -0.04 },
+  { selector: ".floral-corner--left", speed: 0.08 },
+  { selector: ".floral-corner--right", speed: 0.06 },
+  { selector: ".floral-corner--top", speed: -0.05 },
+  { selector: ".section-heading", speed: -0.025 },
+  { selector: ".profile", speed: 0.025 },
+  { selector: ".gallery__item", speed: 0.035 },
+  { selector: ".event-card", speed: 0.02 },
+  { selector: ".bank-card", speed: 0.02 }
+].flatMap((item) => [...document.querySelectorAll(item.selector)].map((element) => ({
+  element,
+  speed: item.speed
+})));
 
 document.body.classList.add("is-locked");
+document.body.classList.add("parallax-ready");
 
 function getGuestFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -34,9 +51,30 @@ if (invitedGuest) {
   rsvpName.value = invitedGuest;
 }
 
+function cleanUrlHash() {
+  if (window.location.hash) {
+    history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  }
+}
+
+function scrollToTarget(hash) {
+  const target = document.querySelector(hash);
+
+  if (!target) {
+    return;
+  }
+
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  cleanUrlHash();
+}
+
+cleanUrlHash();
+
 openInvitation.addEventListener("click", () => {
   cover.classList.add("is-hidden");
   document.body.classList.remove("is-locked");
+  document.body.classList.add("invitation-open");
+  playMusic();
 });
 
 navToggle.addEventListener("click", () => {
@@ -45,10 +83,25 @@ navToggle.addEventListener("click", () => {
 });
 
 navLinks.addEventListener("click", (event) => {
-  if (event.target.tagName === "A") {
+  const link = event.target.closest("a");
+
+  if (link) {
+    event.preventDefault();
+    scrollToTarget(link.getAttribute("href"));
     navLinks.classList.remove("is-open");
     navToggle.setAttribute("aria-expanded", "false");
   }
+});
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="#"]');
+
+  if (!link || link.closest(".nav__links")) {
+    return;
+  }
+
+  event.preventDefault();
+  scrollToTarget(link.getAttribute("href"));
 });
 
 function pad(value) {
@@ -86,6 +139,10 @@ function attendanceLabel(value) {
   return value === "hadir" ? "Hadir" : "Tidak hadir";
 }
 
+function attendanceClass(value) {
+  return value === "hadir" ? "is-attending" : "is-not-attending";
+}
+
 function renderWishes(wishes) {
   if (!wishes.length) {
     wishesList.innerHTML = '<p class="wishes-list__empty">Belum ada ucapan yang ditampilkan.</p>';
@@ -93,10 +150,10 @@ function renderWishes(wishes) {
   }
 
   wishesList.innerHTML = wishes.map((wish) => `
-    <article class="wish-card">
+    <article class="wish-card is-visible">
       <div class="wish-card__top">
         <h4>${escapeHtml(wish.name || "Tamu")}</h4>
-        <span>${attendanceLabel(wish.attendance)}</span>
+        <span class="${attendanceClass(wish.attendance)}">${attendanceLabel(wish.attendance)}</span>
       </div>
       <p>${escapeHtml(wish.message || "Terima kasih atas konfirmasinya.")}</p>
     </article>
@@ -124,12 +181,12 @@ function loadWishesFromGoogleSheet() {
     return;
   }
 
-  renderWishesError("Memuat ucapan dari Google Sheets...");
+  renderWishesError("Memuat ucapan tamu...");
 
   requestGoogleScript({ action: "list" }, (response) => {
     renderWishes(response.data || []);
   }, () => {
-    renderWishesError("Ucapan belum bisa dibaca dari Google Sheets. Cek deploy Apps Script dan akses Web App.");
+    renderWishesError("Ucapan tamu belum dapat ditampilkan. Silakan muat ulang beberapa saat lagi.");
   });
 }
 
@@ -187,13 +244,13 @@ rsvpForm.addEventListener("submit", async (event) => {
 
         renderWishes(response.data || []);
       }, () => {
-        formMessage.textContent = "RSVP belum masuk ke Google Sheets. Cek deploy Apps Script dan akses Web App.";
+        formMessage.textContent = "Maaf, konfirmasi belum berhasil dikirim. Silakan coba beberapa saat lagi.";
       });
     } catch {
-      formMessage.textContent = "RSVP belum masuk ke Google Sheets. Cek deploy Apps Script dan akses Web App.";
+      formMessage.textContent = "Maaf, konfirmasi belum berhasil dikirim. Silakan coba beberapa saat lagi.";
     }
   } else {
-    formMessage.textContent = "Mode demo aktif. Isi GOOGLE_SCRIPT_URL agar RSVP masuk ke Google Sheets.";
+    formMessage.textContent = "Terima kasih, konfirmasi Anda sudah diterima.";
     saveLocalWish(wish);
   }
 
@@ -223,23 +280,77 @@ copyButtons.forEach((button) => {
   });
 });
 
+async function playMusic() {
+  try {
+    await weddingMusic.play();
+    musicToggle.classList.add("is-playing");
+    musicToggle.setAttribute("aria-label", "Jeda musik");
+  } catch {
+    musicToggle.classList.remove("is-playing");
+    musicToggle.setAttribute("aria-label", "Putar musik");
+  }
+}
+
+function pauseMusic() {
+  weddingMusic.pause();
+  musicToggle.classList.remove("is-playing");
+  musicToggle.setAttribute("aria-label", "Putar musik");
+}
+
 musicToggle.addEventListener("click", () => {
-  musicToggle.classList.toggle("is-playing");
-  musicToggle.setAttribute(
-    "aria-label",
-    musicToggle.classList.contains("is-playing") ? "Matikan musik" : "Aktifkan musik"
-  );
+  if (weddingMusic.paused) {
+    playMusic();
+  } else {
+    pauseMusic();
+  }
 });
+
+function updateParallax() {
+  const viewportCenter = window.innerHeight / 2;
+
+  parallaxItems.forEach(({ element, speed }) => {
+    const rect = element.getBoundingClientRect();
+
+    if (rect.bottom < -120 || rect.top > window.innerHeight + 120) {
+      return;
+    }
+
+    const elementCenter = rect.top + rect.height / 2;
+    const offset = (viewportCenter - elementCenter) * speed;
+    element.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
+  });
+}
+
+let parallaxTicking = false;
+
+window.addEventListener("scroll", () => {
+  if (parallaxTicking) {
+    return;
+  }
+
+  parallaxTicking = true;
+  requestAnimationFrame(() => {
+    updateParallax();
+    parallaxTicking = false;
+  });
+}, { passive: true });
+
+window.addEventListener("resize", updateParallax);
+updateParallax();
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove("is-visible");
       }
     });
-  }, { threshold: 0.16 });
+  }, {
+    rootMargin: "-8% 0px -8% 0px",
+    threshold: 0.16
+  });
 
   revealItems.forEach((item) => {
     item.classList.add("reveal");
