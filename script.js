@@ -20,11 +20,7 @@ const parallaxItems = [
   { selector: ".floral-corner--left", speed: 0.08 },
   { selector: ".floral-corner--right", speed: 0.06 },
   { selector: ".floral-corner--top", speed: -0.05 },
-  { selector: ".section-heading", speed: -0.025 },
-  { selector: ".profile", speed: 0.025 },
-  { selector: ".gallery__item", speed: 0.035 },
-  { selector: ".event-card", speed: 0.02 },
-  { selector: ".bank-card", speed: 0.02 }
+  { selector: ".gallery__item", speed: 0.035 }
 ].flatMap((item) => [...document.querySelectorAll(item.selector)].map((element) => ({
   element,
   speed: item.speed
@@ -348,8 +344,7 @@ if ("IntersectionObserver" in window) {
       }
     });
   }, {
-    rootMargin: "-8% 0px -8% 0px",
-    threshold: 0.16
+    threshold: [0, 0.2, 1]
   });
 
   revealItems.forEach((item) => {
