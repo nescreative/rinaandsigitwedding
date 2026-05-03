@@ -105,8 +105,9 @@ textarea {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(10px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.is-visible {
@@ -993,6 +994,7 @@ textarea {
   max-width: 680px;
   margin: 0 auto;
   padding: 26px;
+  transform: none;
 }
 
 .rsvp-form label {
@@ -2329,13 +2331,9 @@ body.invitation-open .site-header {
 .parallax-ready .hero__content,
 .parallax-ready .hero-arch,
 .parallax-ready .floral-corner,
-.parallax-ready .section-heading,
-.parallax-ready .profile,
-.parallax-ready .gallery__item,
-.parallax-ready .event-card,
-.parallax-ready .bank-card {
+.parallax-ready .gallery__item {
   translate: 0 var(--parallax-y, 0px);
-  transition: translate 0.18s linear, transform 0.35s ease, box-shadow 0.35s ease, opacity 0.9s ease, filter 0.9s ease;
+  transition: translate 0.28s linear, transform 0.35s ease, box-shadow 0.35s ease, opacity 0.9s ease, filter 0.9s ease;
 }
 
 .parallax-ready .floral-corner--top {
@@ -2706,4 +2704,40 @@ body.invitation-open .site-header {
   .rsvp::after {
     max-width: 42vw;
   }
+}
+
+/* Explicit reveal for timer and couple cards */
+.countdown div.reveal,
+.profile.reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(34px) scale(0.96);
+  transition:
+    opacity 0.85s ease,
+    filter 0.85s ease,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.countdown div.reveal.is-visible,
+.profile.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.countdown div.reveal:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.countdown div.reveal:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.countdown div.reveal:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.profile.reveal:nth-child(3) {
+  transition-delay: 0.14s;
 }
